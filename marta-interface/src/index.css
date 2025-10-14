@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.header h1 {
+  color: #333;
+  margin: 0;
+}
+
+.line-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.line-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.line-button.gold { background-color: #FFD700; }
+.line-button.red { background-color: #FF0000; }
+.line-button.green { background-color: #00FF00; }
+.line-button.blue { background-color: #0000FF; }
+
+.line-button:hover {
+  opacity: 0.8;
+}
+
+.line-button.active {
+  border: 3px solid #000;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.filter-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.stations {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.station-button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.station-button.active {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.train-list {
+  display: grid;
+  gap: 15px;
+}
+
+.train-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+.train-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.train-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.status.on-time {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.delayed {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.no-trains {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.nav-link:hover {
+  background: #0056b3;
+}
