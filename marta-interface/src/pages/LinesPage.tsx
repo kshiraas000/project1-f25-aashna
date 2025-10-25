@@ -44,44 +44,37 @@ export default function LinesPage() {
     }
   }, [lineColor]);
 
-  // Fetch train data
+  // Fetch both train and station data
   useEffect(() => {
-    const fetchTrainData = async () => {
+    const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://midsem-bootcamp-api.onrender.com/arrivals/${currColor}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch train data');
+        // Fetch both train and station data in parallel
+        const [trainResponse, stationResponse] = await Promise.all([
+          fetch(`https://midsem-bootcamp-api.onrender.com/arrivals/${currColor}`),
+          fetch(`https://midsem-bootcamp-api.onrender.com/stations/${currColor}`)
+        ]);
+
+        if (!trainResponse.ok || !stationResponse.ok) {
+          throw new Error('Failed to fetch data');
         }
-        const data = await response.json();
-        setTrainData(data);
+
+        const [trainData, stationData] = await Promise.all([
+          trainResponse.json(),
+          stationResponse.json()
+        ]);
+
+        setTrainData(trainData);
+        setStationData(stationData);
       } catch (error) {
-        console.error('Error fetching train data:', error);
+        console.error('Error fetching data:', error);
         setTrainData(null);
+        setStationData(null);
       }
       setLoading(false);
     };
 
-    fetchTrainData();
-  }, [currColor]);
-
-  // Fetch station data
-  useEffect(() => {
-    const fetchStationData = async () => {
-      try {
-        const response = await fetch(`https://midsem-bootcamp-api.onrender.com/stations/${currColor}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch station data');
-        }
-        const data = await response.json();
-        setStationData(data);
-      } catch (error) {
-        console.error('Error fetching station data:', error);
-        setStationData(null);
-      }
-    };
-
-    fetchStationData();
+    fetchData();
   }, [currColor]);
 
   const handleStationSelect = (station: string) => {
