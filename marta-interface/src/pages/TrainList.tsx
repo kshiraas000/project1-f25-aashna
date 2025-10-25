@@ -49,7 +49,16 @@ export default function TrainList({ color, data, selectedStation, filters }: Tra
 
   // Filter by direction
   if (filters.direction) {
-    filteredTrains = filteredTrains.filter(train => train.DIRECTION === filters.direction);
+    const isGreenOrBlue = color.toLowerCase() === 'green' || color.toLowerCase() === 'blue';
+    let directionValue = filters.direction;
+    
+    if (isGreenOrBlue) {
+      directionValue = filters.direction === 'Eastbound' ? 'E' : 'W';
+    } else {
+      directionValue = filters.direction === 'Northbound' ? 'N' : 'S';
+    }
+    
+    filteredTrains = filteredTrains.filter(train => train.DIRECTION === directionValue);
   }
 
   return (

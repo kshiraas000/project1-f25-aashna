@@ -100,6 +100,15 @@ export default function LinesPage() {
     return isGreenOrBlue ? ['Eastbound', 'Westbound'] : ['Northbound', 'Southbound'];
   };
 
+  const getDirectionValue = (direction: string) => {
+    const isGreenOrBlue = currColor.toLowerCase() === 'green' || currColor.toLowerCase() === 'blue';
+    if (isGreenOrBlue) {
+      return direction === 'Eastbound' ? 'E' : 'W';
+    } else {
+      return direction === 'Northbound' ? 'N' : 'S';
+    }
+  };
+
   if (loading) {
     return (
       <div className="container">
